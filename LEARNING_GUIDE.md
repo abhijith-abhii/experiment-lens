@@ -23,11 +23,15 @@ Follow the README installation block, then: Inspect the synthetic experiment, th
 
 ## Five interview questions
 
-1. **What problem does this project solve, and what is its unit of work?** Explain audit and interpret an a/b experiment, identify product analysts as the audience, and trace one concrete example through the files above. Use the demonstration output rather than hypothetical impact.
-2. **Why did you choose the first design decision?** Validate unique randomized user IDs and binary outcomes before computing effects. Show the corresponding implementation and a test that would fail if that property were removed.
-3. **How do you protect correctness when inputs or execution change?** Report absolute/relative lift, rate intervals, a fixed-horizon test and sample-ratio mismatch separately. Explain the relevant invalid-input or edge-case test and distinguish a checked property from an untested assumption.
-4. **How do you make results inspectable and reproducible?** Expose allocation and planning assumptions; keep statistical evidence distinct from a shipping decision. Point to actual outputs and recorded commands. Explain why a successful example is weaker evidence than a tested boundary or independently reconciled total.
-5. **What would you improve before real deployment or real-data use?** Synthetic fixed-window experiment. Normal approximations can fail for sparse events. No sequential peeking correction, multiple testing adjustment, interference analysis or guardrail metric. Sample-size calculation is an equal-group planning approximation. Choose one limitation, describe the missing evidence, and propose a measurable acceptance check rather than promising production readiness.
+1. **Why check sample-ratio mismatch first?** An unexpected allocation imbalance can indicate an assignment or instrumentation problem. A statistically significant conversion result is not trustworthy if the experiment itself is compromised.
+
+2. **What is the unit of randomization here?** One row per unique user. Duplicate user records violate the intended unit and are rejected before calculating the comparison.
+
+3. **Why report an interval as well as a p-value?** The interval communicates the plausible effect magnitude under the model. A p-value alone does not show practical importance or the cost-benefit tradeoff.
+
+4. **How do absolute and relative lift differ?** Absolute lift is the difference in conversion rates, in percentage points. Relative lift divides that difference by the control rate and can look large when the baseline is small.
+
+5. **What assumptions limit the analysis?** The normal approximations need adequate counts, and the planning formula assumes a fixed two-arm comparison. Sparse outcomes, repeated peeking and multiple testing require additional methods.
 
 ## Independent exercise
 
@@ -41,6 +45,6 @@ The implementation was developed with substantial AI assistance under Abhijith V
 
 Suggested factual bullet after personally validating the demo:
 
-- Implemented and validated audit and interpret an a/b experiment using scipy · Flask, with srm checks and documented correctness checks and limitations.
+- Built a 4,000-user synthetic A/B analysis workflow with sample-ratio checks, conversion intervals, lift estimates and power planning; verified nine analytical/API checks.
 
 Use [VERIFICATION.md](VERIFICATION.md) to add only measured numbers. Do not claim production traffic, users, savings, upstream acceptance or cloud deployment without corresponding evidence.
