@@ -1,0 +1,53 @@
+{
+  "answer": "Effect remains uncertain. Lift interval: -0.51 to 3.66 percentage points.",
+  "details": {
+    "absolute_lift": 0.01578604775150036,
+    "alpha": 0.05,
+    "control_conversions": 248,
+    "control_n": 2033,
+    "control_rate": 0.1219872110181997,
+    "control_wilson": [
+      0.10846955413294164,
+      0.13693072317194788
+    ],
+    "lift_interval": [
+      -0.005055683384255553,
+      0.03662777888725627
+    ],
+    "p_value": 0.1374422719526736,
+    "planning_mde": 0.03,
+    "planning_n_per_arm_80pct": 2063,
+    "relative_lift": 0.12940739951129127,
+    "srm_flag": false,
+    "srm_p_value": 0.29669288276391964,
+    "treatment_conversions": 271,
+    "treatment_n": 1967,
+    "treatment_rate": 0.13777325876970006,
+    "treatment_wilson": [
+      0.12324639691602886,
+      0.153712186625903
+    ],
+    "validity_warning": "Sparse outcomes require exact methods; repeated peeking invalidates fixed-horizon p-values."
+  },
+  "metrics": {
+    "Absolute lift": "1.58 pp",
+    "Planning users/arm": 2063,
+    "SRM p-value": 0.2967,
+    "p-value": 0.1374
+  },
+  "notice": "Fixed-horizon analysis of synthetic randomized data. No sequential monitoring adjustment, covariate adjustment, or multiple-metric correction. Statistical significance is not a business decision.",
+  "rows": [
+    {
+      "conversions": 248,
+      "rate": 0.1219872110181997,
+      "users": 2033,
+      "variant": "A"
+    },
+    {
+      "conversions": 271,
+      "rate": 0.13777325876970006,
+      "users": 1967,
+      "variant": "B"
+    }
+  ]
+}

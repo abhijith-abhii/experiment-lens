@@ -1,0 +1,9 @@
+{
+  "slug": "experiment-lens",
+  "fresh_venv": "work/clean-envs/experiment-lens",
+  "fresh_checkout": "work/clean/experiment-lens",
+  "passed": true,
+  "failure": null,
+  "runtime": "Python 3.12.14",
+  "model_training": null
+}
